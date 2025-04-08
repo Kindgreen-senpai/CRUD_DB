@@ -6,7 +6,7 @@
 @csrf
 @method('PUT')
     <div class="card my-4">
-        <h5 class="card-header">Create new worker</h5>
+        <h5 class="card-header">Edit worker</h5>
         <div class="card-body">
                 <div class="form-group">
                     <label for="first_name">First name</label>
