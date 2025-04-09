@@ -25,16 +25,16 @@
             </a> --}}
             
             <ul class="nav col-12 me-lg-auto justify-content-center mb-md-0 ">
-                <li><a href="/" class="nav-link px-2 text-white">Home</a></li>
-                <li><a href="/worker/create" class="nav-link px-2 text-white">Add worker</a></li>
-                <li>
+                <li class="px-1"><a href="/" class="nav-link px-2 text-white"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
+                <li class="px-1"><a href="/worker/create" class="nav-link px-2 text-white"><i class="fa fa-plus" aria-hidden="true"></i> Add worker</a></li>
+                <li class="px-1">
                     <form action="/workers/delete" method="POST">
                         @csrf
                         @method("DELETE")
-                        <button type="submit" class="btn btn-link nav-link px-2 text-white">Delete all</button>
+                        <button type="submit" class="btn btn-link nav-link px-2 text-white"><i class="fa fa-trash" aria-hidden="true"></i> Delete all</button>
                     </form>
                 </li>
-                <li>                    
+                <li class="px-1">                    
                     @php
                     $request = request();
                     $params="";
@@ -46,12 +46,12 @@
                     <form action="/workers/export{{$params}}" method="POST">
                         @csrf
                         {{-- @method("PUT") --}}
-                        <button type="submit" class="btn btn-link nav-link px-2 text-white">Export to Excel</button>
+                        <button type="submit" class="btn btn-link nav-link px-2 text-white"><i class="fa fa-download" aria-hidden="true"></i> Export to Excel</button>
                     </form>
                     {{-- <li><a href="/worker/export" class="nav-link px-2 text-white">Export to Excel</a></li> --}}
                 </li>
-                <li><a href="/workers/file_upload" class="nav-link px-2 text-white">Import from Excel</a></li>
-                <li><a href="/logout" class="nav-link px-2 text-white">Logout</a></li>
+                <li class="px-1"><a href="/workers/file_upload" class="nav-link px-2 text-white"><i class="fa fa-upload" aria-hidden="true"></i> Import from Excel</a></li>
+                <li class="px-1"><a href="/logout" class="nav-link px-2 text-white"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
             </ul>
             
             @if(Route::current()->uri()=='/')
@@ -70,7 +70,7 @@
                             <option value="phone">Phone</option>
                           </select>
                         <input class="form-control" type="search" placeholder="Search" aria-label="Search" name="search" value="{{old('search')}}">
-                        <button class="btn btn-secondary" type="submit">Search</button>
+                        <button class="btn btn-secondary" type="submit"><i class="fa fa-search" aria-hidden="true"></i> Search</button>
                     </div>
                 </form>
             </div>

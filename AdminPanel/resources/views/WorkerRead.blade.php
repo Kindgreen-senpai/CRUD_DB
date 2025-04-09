@@ -27,12 +27,12 @@
             <td> {{$worker->salary}}</td>
             <td> {{$worker->hire_date}}</td>
             <td> {{$worker->phone}}</td>
-            <td style="padding: .3rem;"> <a href="/worker/{{$worker->id}}/update" class="text-white btn btn-secondary">Edit</a></td>
+            <td style="padding: .3rem;"> <a href="/worker/{{$worker->id}}/update" class="text-white btn btn-secondary"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a></td>
             <td style="padding: .3rem;"> 
                 <form style="display:inline" action="/worker/{{$worker->id}}" method="post">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="text-white btn btn-danger">Delete</button>
+                    <button type="submit" class="text-white btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
                 </form>
             </td>
             </tr>            
@@ -44,7 +44,7 @@
     </tbody>
     </table>
     <div class="d-flex justify-content-md-center">
-        {!! $workers->appends(Request::except('page'))->render() !!}
+        {!! $workers->appends(Request::except('page'))->render("pagination::bootstrap-4") !!}
     {{-- {{$workers->links()}}   --}}
     </div>
 @endsection
