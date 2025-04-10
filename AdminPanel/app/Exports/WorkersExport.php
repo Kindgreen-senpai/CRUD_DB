@@ -16,11 +16,10 @@ class WorkersExport implements WithColumnWidths, WithColumnFormatting, FromColle
     * @return \Illuminate\Support\Collection
     */
 
-    // protected $request;
 
     public function __construct()
     {
-        // $this->request = $request;
+        
     }
 
     public function collection()
@@ -45,7 +44,6 @@ class WorkersExport implements WithColumnWidths, WithColumnFormatting, FromColle
     
     public function map($worker): array
     {
-        // dd($worker->phone);
         return [
             $worker->id,
             $worker->first_name,

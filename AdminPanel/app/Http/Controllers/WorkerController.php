@@ -15,11 +15,7 @@ class WorkerController extends Controller
 {
     function read(Request $request)  {
 
-        // $workers = Worker::all()->filter(request(['search']));
-        // dd(request(['search']));
-
         $workers = Worker::sortable()->filter(request(['search']))->paginate(14);
-        // $workers = Worker::paginate(14);
         return view("WorkerRead",['workers'=>$workers]);
     }
     function create()  {
@@ -38,13 +34,11 @@ class WorkerController extends Controller
         $phone = new PhoneNumber($fields['phone']);
         $fields['phone']=$phone->formatE164();
         $fields['hire_date'] = date('Y-m-d', strtotime($fields['hire_date']));
-        // dd($fields);
         Worker::create($fields);
         return redirect('/');
-        // dd($fields);
     }
-    function delete(Worker $worker)  {
-        $worker->delete();
+    function delete(Request $request)  {
+        Worker::destroy(explode(",", $request->selected));
         return redirect('/');
     }
     function update(Worker $worker)  {
@@ -63,18 +57,14 @@ class WorkerController extends Controller
         $phone = new PhoneNumber($fields['phone']);
         $fields['phone']=$phone->formatE164();
         $fields['hire_date'] = date('Y-m-d', strtotime($fields['hire_date']));
-        // dd($fields);
         $worker->update($fields);
         return redirect('/');
-        // dd($fields);
     }
     function delete_all()  {
         Worker::truncate();
         return redirect('/');
     }
     function export(Request $request) {
-        // $workers = Worker::sortable()->filter(request(['search']))->get();
-        // dd($workers);
         return Excel::download(new WorkersExport($request),'workers.xlsx');
     }
     function file_upload()  {
@@ -82,15 +72,12 @@ class WorkerController extends Controller
     }
 
     function import(Request $request) {
-        // dd(request()->file);
         $request->validate([
             'file' => 'required',
         ]);
         $file = $request->file('file');
         $workers = Excel::import(new WorkersImport(), $file,ExcelExcel::XLSX);
         
-        // $workers = (new WorkersImport)->toCollection($file)[0];
-        // dd($workers);
         return redirect('/');
     }
 

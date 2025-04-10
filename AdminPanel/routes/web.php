@@ -21,7 +21,7 @@ Route::get('/', [WorkerController::class, "read"])->name('root');;
 Route::get('/worker/create', [WorkerController::class, "create"])->middleware('auth');
 Route::post('/worker/', [WorkerController::class, "store"])->middleware('auth');
 
-Route::delete('/worker/{worker}', [WorkerController::class, "delete"])->middleware('auth');
+Route::delete('/worker/', [WorkerController::class, "delete"])->middleware('auth');
 
 Route::get('/worker/{worker}/update', [WorkerController::class, "update"])->middleware('auth');
 Route::put('/worker/{worker}', [WorkerController::class, "edit"])->middleware('auth');
@@ -33,15 +33,11 @@ Route::post('/workers/export/', [WorkerController::class, 'export'])->middleware
 Route::get('/workers/file_upload', [WorkerController::class, "file_upload"])->middleware('auth');
 Route::put('/workers/import', [WorkerController::class, 'import'])->middleware('auth');
 
-
 Route::get('/authorize', function(Request $request) {
-    // @dd(bcrypt($request->password));
     $fields = $request->validate([
         'name' => 'required',
         'password' => 'required'
-    ]);
-    // $fields['password']=bcrypt($fields['password']);
-    
+    ]);    
     if(auth()->attempt($fields)) {
         $request->session()->regenerate();
         return redirect('/');

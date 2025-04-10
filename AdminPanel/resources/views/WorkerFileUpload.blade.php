@@ -8,17 +8,7 @@
         <div class="card my-4">
             <h5 class="card-header">Import workers from Excel file</h5>
 
-            <div class="card-body">
-
-
-                {{-- <div class="form-group">
-                    <label for="first_name">File name</label>
-                    <input type="text" class="form-control" id="first_name" placeholder="Will" name="first_name" value="" >
-                    @error('first_name')
-                        <p class="text-danger text-xs mt-1">{{$message}}</p>                        
-                    @enderror
-                </div> --}}
-                
+            <div class="card-body">                
                 <div class="mb-3">
                     <input class="form-control form-control-lg" name="file" type="file" id="file">
                 </div>

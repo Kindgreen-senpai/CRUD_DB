@@ -11,7 +11,7 @@
     <title>Document</title>
     <style>
         .container{
-            max-width: 1200px;
+            max-width: 1300px;
         }
     </style>
 </head>
@@ -20,10 +20,6 @@
 <header class="p-3 bg-dark text-white">
     <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            {{-- <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-            <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
-            </a> --}}
-            
             <ul class="nav col-12 me-lg-auto justify-content-center mb-md-0 ">
                 <li class="px-1"><a href="/" class="nav-link px-2 text-white"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
                 <li class="px-1"><a href="/worker/create" class="nav-link px-2 text-white"><i class="fa fa-plus" aria-hidden="true"></i> Add worker</a></li>
@@ -42,13 +38,10 @@
                         $params="?category=".$request->category."&"."search=".$request->search;
                     }
                     @endphp
-                    {{-- category=hire_date&search=2025-03-30 --}}
                     <form action="/workers/export{{$params}}" method="POST">
                         @csrf
-                        {{-- @method("PUT") --}}
                         <button type="submit" class="btn btn-link nav-link px-2 text-white"><i class="fa fa-download" aria-hidden="true"></i> Export to Excel</button>
                     </form>
-                    {{-- <li><a href="/worker/export" class="nav-link px-2 text-white">Export to Excel</a></li> --}}
                 </li>
                 <li class="px-1"><a href="/workers/file_upload" class="nav-link px-2 text-white"><i class="fa fa-upload" aria-hidden="true"></i> Import from Excel</a></li>
                 <li class="px-1"><a href="/logout" class="nav-link px-2 text-white"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
@@ -89,7 +82,6 @@
             <div class="card my-4">
                 <h5 class="card-header">Authorize</h5>
                 <div class="card-body">
-{{-- @dd(bcrypt("12345678")) --}}
                         <div class="form-group">
                             <label for="name">Login</label>
                             <input type="text" class="form-control" id="name"  name="name" >
